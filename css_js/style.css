@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*-------------------------Général------------------------*/
+
+
+body{
+    margin: 0 auto;
+    justify-content: center; 
+    scroll-behavior: smooth;
+    --col1:rgb(22, 151, 134);
+    --col2: bisque;
+    --col3:rgb(175, 53, 53);
+} 
+div{
+    display: flex;
+}
+
+a{
+    margin: 0 ;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center; 
+    align-items: center;
+    flex-wrap: wrap;
+}
+p{
+    margin: 0 ;
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    text-align: center; 
+    align-items: center;
+}
+img{
+    
+    object-fit: contain;
+}
+
+/*-----------------------TEXTE----------------------------------*/
+h1 {
+    margin: 0 ;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 60px;
+    line-height: 70px;
+}
+h2{
+    margin: 0 ;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 30px;
+    text-decoration: none;
+}
+h3{
+    margin: 0 ;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 56px;
+}
+h4{
+    margin: 0 ;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 30px;
+}
+.f16{
+    margin: 0 ;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 16px;
+}
+.f20{
+    margin: 0 ;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+}
+.f25{
+    margin: 0 ;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 25px;
+}
+.f30{
+    margin: 0 ;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.transupline{
+    transform: translateY(0px);
+}
+.bold{
+    font-weight: bold;
+}
+.margin100up{
+    margin-top: 100px;
+}
+.margin100down{
+    margin-bottom: 100px;
+}
+.margin20down{
+    margin-bottom: 20px;
+}
+.ita{
+    font-style: italic;
+}
+.DDIN{ 
+    font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+
+}
+.PFD{
+    font-family: 'Playfair Display', serif;
+}
+
+/*------------------------------INDEX------------------------------*/
+
+.index{
+    display: flex;
+}
+
+.homeindex{
+    background: linear-gradient(55deg,
+    rgb(187, 111, 111) 0%,
+    rgb(187, 85, 85) 51%,
+    rgb(143, 18, 18) 85%);
+    z-index: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    width: 100%;
+    height: 1152px;
+    z-index: -1000;
+}
+.slideimg{
+    z-index: -1000;
+}
+div#slider { 
+    width: 100%;  
+    height: 100%;
+    overflow: hidden; 
+    display: block;
+}
+@keyframes slidy {
+    0% { left: 0%; }
+    20% { left: 0%; }
+    25% { left: -100%; }
+    45% { left: -100%; }
+    50% { left: -200%; }
+    70% { left: -200%; }
+    75% { left: -300%; }
+    95% { left: -300%; }
+    100% { left: -400%; }
+  }
+div#slider figure {
+    position: relative;
+    width: 500%;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    top: 200px;
+    left: 0;
+    text-align: left;
+    animation: 30s slidy infinite;
+  }
+div#slider figure img { width: 20%; height: auto; float: left; }
+
+.homeother{
+    z-index: 1;
+    position: relative;
+    display: flex;
+    top: 0;
+    width: 100%;
+    height: 200px;
+    background-color: var(--col1);
+}
+
+.real{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    background: white;
+}
+
+.titre{
+    display: flex;
+    color: var(--col3);
+}
+.soustitre{
+    margin: 0px 250px;
+    display: flex;
+    color: var(--col3);
+}
+.allboxmain{
+    margin: 100px;
+    display: flex;
+    width: 600px;
+    max-height: 900px;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.allboxmaincre{
+    margin: 100px;
+    display: flex;
+    width: 900px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.boximg{
+    width: 300px;
+    height: 300px;    
+    background-color: whitesmoke;
+    transition: 0.3s;
+    background-image: url();
+}
+.boximg:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
+    z-index: 3600;
+    transition: 0.3s;
+    border-radius: 10px;
+}
+.cf1{
+    background-image: url(../data/cf1.jpg);
+    background-size:cover;
+}
+.cf2{
+    background-image: url(../data/cf2.jpg);
+    background-size:cover;
+}
+.cf3{
+    background-image: url(../data/cf3.jpg);
+    background-size:cover;
+}
+.cf4{
+    background-image: url(../data/cf4.jpg);
+    background-size:cover;
+}
+.cf5{
+    background-image: url(../data/cf5.jpg);
+    background-size:cover;
+}
+.cf6{
+    background-image: url(../data/cf6.jpg);
+    background-size:cover;
+}
+.cf7{
+    background-image: url(../data/cf7.jpg);
+    background-size:cover;
+}
+.cf8{
+    background-image: url(../data/cf8.jpg);
+    background-size:cover;
+}
+.cf9{
+    background-image: url(../data/cf9.jpg);
+    background-size:cover;
+}
+.cf10{
+    background-image: url(../data/cf10.jpg);
+    background-size:cover;
+}
+.cf11{
+    background-image: url(../data/cf11.jpg);
+    background-size:cover;
+}
+.cf12{
+    background-image: url(../data/cf12.jpg);
+    background-size:cover;
+}
+.cf13{
+    background-image: url(../data/cf13.jpg);
+    background-size:cover;
+}
+.cf14{
+    background-image: url(../data/cf14.jpg);
+    background-size:cover;
+}
+.cf15{
+    background-image: url(../data/cf15.jpg);
+    background-size:cover;
+}
+.cf16{
+    background-image: url(../data/cf16.jpg);
+    background-size:cover;
+}
+.cf17{
+    background-image: url(../data/cf17.jpg);
+    background-size:cover;
+}
+.cf18{
+    background-image: url(../data/cf18.jpg);
+    background-size:cover;
+}
+.logoinsta{
+    height: 15px;
+    width: 15px;
+}
+.reseauinsta{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

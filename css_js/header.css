@@ -1,0 +1,49 @@
+.header{
+    width: 100%;
+    background: white;  
+    flex-direction: row;
+    display:flex;
+    position: absolute;
+    top: 50px;
+    height: 80px;
+    z-index: 7200;
+    align-items: center;
+    justify-content: space-around;
+    background: rgba(0,0,0,0) !important;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    text-transform: none;
+}
+.header1{
+    align-items: center;
+    justify-content: center;
+}
+.header2{
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.selected{
+    color: var(--col2);
+}
+.headerind{
+    padding: 0 30px;
+    transition: 0.1s;
+}
+.headerind:hover:not(.selected){
+    color: var(--col2);
+    transform: scale(1.2);
+    align-items: center;
+    justify-content: center;
+    transition: 0.1s;
+}
+.sticky {
+    top: 0px;
+    height: 80px;
+    padding:  0px;
+    background: rgba(0,0,0,0.35) !important;
+    position: fixed;
+    width: 100%
+}

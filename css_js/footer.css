@@ -1,0 +1,55 @@
+.footer{
+    height: 200px;
+    width: 100%;
+    background: var(--col2);
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+}
+.footerbox{
+    width: 25%;
+    padding:0 10px;
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.footertitle{
+    text-align: left;
+    padding: 10px 0;
+    color: var(--col3);
+    
+}
+.footersubtitle{
+    padding: 4px;
+    padding-bottom: 0px;
+    color: var(--col3);
+    text-align: left;
+    
+}
+.footerboxmarginleft{
+    margin-left: 200px;
+}
+.redir{
+    flex-direction: row;
+}
+.redir:hover .redirtxt{
+    font-weight: bold;
+    text-decoration: underline;
+}
+.redir:hover .redirarrow{
+    transform: translateX(5px);
+    font-weight: bold;
+}
+.redirarrow{
+    transition: 0.1s;
+}
+footer{
+    height: 30px;
+    background: var(--col3);
+    display: none;
+}
+.pitch{
+    margin: 100px 400px 100px 400px;
+    line-height: 27px;
+}
