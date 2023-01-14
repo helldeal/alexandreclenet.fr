@@ -1,3 +1,12 @@
 html {
     background-color: rgb(19, 17, 17);
 }
+
+body {
+    overflow: hidden;
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+  }
+ body::-webkit-scrollbar {
+    display: none;
+  }
