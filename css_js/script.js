@@ -4,10 +4,20 @@
 */
 
 //const loader = document.getElementById("preloader");
-window.addEventListener("click",function() {
-        document.getElementById("preloader").style.transform = "translateX(100%)";
-        if(window.innerWidth <= 800) {
-            titleGeneral.classList.add('isVisible');
-        }
-    document.getElementById('music').play();
-});
+
+
+
+function openSpot() {
+    document.getElementsByClassName("layerspotify")[0].style.transform = "translateY(-100%)"
+    document.getElementById("overlay").style.display="block"
+    document.body.classList.add("notScrollable")
+}
+
+
+
+/* Set the width of the side navigation to 0 */
+function closeSpot() {
+    document.getElementsByClassName("layerspotify")[0].style.transform = "translateY(100%)"
+    document.getElementById("overlay").style.display="none"
+    document.body.classList.remove("notScrollable")
+}
