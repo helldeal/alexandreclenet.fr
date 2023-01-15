@@ -1,7 +1,3 @@
-@font-face {
-    font-family: 'JabbaTheFont';
-    src: url("data/JabbaTheFont-ADpD.ttf");
-  }
 
 
 html {
@@ -12,7 +8,8 @@ html {
 }
 
 body {
-    font-family: 'JabbaTheFont';
+    font-family: 'jabba_the_fontregular';
+    font-size: 15px;
     overflow: hidden;
     -ms-overflow-style: none; 
     scrollbar-width: none;
