@@ -14,34 +14,78 @@
         
         <div id="preloader">
             <img src="data/sunaj.png" alt="sunaj" />
-            <h1>Work in progress</h1>
+            <h1>Click to enter TATOOINE</h1>
         </div>
+        
         <div id="overlay" onclick="closeSpot()"></div>
 
-        <div class="bio"></div>
-        <iframe class="layerspotify" style="border-radius:12px" src="https://open.spotify.com/embed/album/1bCcXu8aR3WDBJLnA3jg7S?utm_source=generator&theme=0" 
-        width="100%" height="400" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <div class="mainpage">
+            <iframe class="layerspotify" style="border-radius:12px" src="https://open.spotify.com/embed/album/1bCcXu8aR3WDBJLnA3jg7S?utm_source=generator&theme=0" 
+            width="100%" height="40%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    
+            
+            <h1 id="wel">Welcome to TATOOINE</h1>
+            <h1 id="bio" onclick="openBio()">Bio</h1>
+            <h1 id="vid" onclick="openvid()">Videos</h1>
+            <h1 id="spot" onclick="openSpot()">Spotify</h1>
+            <h1 id="mus">Music</h1>
+            <div class="mixbox">
+                <h1>GORDON</h1>
+                <h1>FOGO!</h1>
+                <h1>BRK</h1>
+                <h1>PAS AVEC MOI</h1>
+                <h1>AQUARELLES</h1>
+                <h1>PAIRE DE JANOSKY</h1>
+                <h1>MOURIR...</h1>
+                <h1>NOVEMBRE</h1>
+            </div>
+            
+    
+    
+            <video class="sunajgif"  autoplay muted loop controlslist="nofullscreen">
+                <source src="data/tatooinegif.MP4" type="video/mp4">
+            </video> 
 
+        </div>
+        <div class="bio">
+            <h1 id="wel" onclick="closeBio()">return to TATOOINE</h1>
+        </div>
         
-        <h1 id="wel">Welcome to TATOOINE</h1>
-        <h1 id="bio">Bio</h1>
-        <h1 id="vid">Videos</h1>
-        <h1 id="spot" onclick="openSpot()">Spotify</h1>
-        <h1 id="mus">Music</h1>
-        
-
-
-        <video class="sunajgif"  autoplay muted loop controlslist="nofullscreen">
-            <source src="data/tatooinegif.MP4" type="video/mp4">
-        </video> 
+        <div class="vid">
+            <h1 id="wel" onclick="closevid()">return to TATOOINE</h1>
+            <iframe id="video1" width="100%" height="100%" 
+            src="https://www.youtube.com/embed/2ORhttueytk" style="border:none;">
+            </iframe> 
+        </div>
         <!-- <iframe id="iframe_YTP_1673655881425" class="playerBox" style="position: absolute; z-index: 0; width: 100vw; 
         height: 100vh; top: 0px; left: 0px; overflow: hidden; opacity: 1; user-select: none;
         transition-property: opacity; transition-duration: 1000ms;" allowfullscreen="0" allow="accelerometer; 
         autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" title="GORDON" 
         src="https://www.youtube.com/embed/YahNtfzuioY??rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1" frameborder="0"></iframe> -->
         
-        <audio id="music" preload>
+        <audio id="GORDON" preload>
             <source src="data/GORDON.mp3" type="audio/mp3">
+        </audio>
+        <audio id="FOGO!" preload>
+            <source src="data/FOGO!.mp3" type="audio/mp3">
+        </audio>
+        <audio id="BRK" preload>
+            <source src="data/BRK.mp3" type="audio/mp3">
+        </audio>
+        <audio id="PAS AVEC MOI" preload>
+            <source src="data/PAS AVEC MOI.mp3" type="audio/mp3">
+        </audio>
+        <audio id="AQUARELLES" preload>
+            <source src="data/AQUARELLES.mp3" type="audio/mp3">
+        </audio>
+        <audio id="PAIRE DE JANOSKY" preload>
+            <source src="data/PAIRE DE JANOSKY.mp3" type="audio/mp3">
+        </audio>
+        <audio id="MOURIR..." preload>
+            <source src="data/MOURIR....mp3" type="audio/mp3">
+        </audio>
+        <audio id="NOVEMBRE" preload>
+            <source src="data/NOVEMBRE.mp3" type="audio/mp3">
         </audio>
 
     </body>
