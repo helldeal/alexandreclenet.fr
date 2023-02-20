@@ -3,7 +3,7 @@
 * then it disapears when all elements are loaded
 */
 
-
+/*
 var md = document.querySelectorAll(".mixbox h1");
 var clicked =false
 window.addEventListener("click",function() {
@@ -16,7 +16,7 @@ window.addEventListener("click",function() {
         }, 1500);
     }
         
-});
+});*/
 
 function openSpot() {
     document.getElementsByClassName("layerspotify")[0].style.transform = "translateY(-100%)"
@@ -68,7 +68,7 @@ function closevid() {
     }, 1250);
 }
 
-document.getElementById("preloader").click()
+//document.getElementById("preloader").click()
 
 
 for (var i = 0; i < md.length; i++) {
