@@ -11,7 +11,7 @@ displaymovie(await movieDAO.getPopulars())
 function displaymovie(array){
     const section = document.querySelector('section')
     const body=document.querySelector('body')
-    body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)),url(https://image.tmdb.org/t/p/w1280${array.results[Math.floor(Math.random() * 20)].backdrop_path})`;
+    if(body.style.backgroundImage=="")body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)),url(https://image.tmdb.org/t/p/w1280${array.results[Math.floor(Math.random() * 20)].backdrop_path})`;
     section.innerHTML = '';
     array.results.forEach(element => {
         const article =document.createElement("article")
