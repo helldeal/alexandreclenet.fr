@@ -1,0 +1,45 @@
+.container {
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.container .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container .content .movie {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.container .content .movie  img {
+    object-fit: cover;
+    padding: 10px;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border-radius: 5px;
+    flex-basis: 50%;
+}
+
+.container .content .movie  > div  {
+    flex-basis: 40%;
+
+}
+
+
+
+
+
+
