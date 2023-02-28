@@ -1,6 +1,6 @@
 "use struct"
 document.querySelector("#refreshPopular").addEventListener("click", (event) => {
-    document.location.href="/";
+    document.location.href="/movie/";
   });
   
 const params = new URLSearchParams(window.location.search);
@@ -8,7 +8,7 @@ const id = parseInt(params.get("id"));
 
 import {movieDAO} from "./dao/movieDAO.mjs";
 let element = await movieDAO.getById(id)
-if(element.title == undefined)document.location.href="/"
+if(element.title == undefined)document.location.href="/movie/"
 
 const body=document.querySelector('body')
 body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)),url(https://image.tmdb.org/t/p/w1280${element.backdrop_path})`;

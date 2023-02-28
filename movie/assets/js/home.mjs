@@ -2,7 +2,7 @@
 import {movieDAO} from "./dao/movieDAO.mjs";
 
 document.querySelector("#refreshPopular").addEventListener("click", (event) => {
-    document.location.href="/";
+    document.location.href="/movie/";
 });
 
 const input = document.querySelector('#search')
