@@ -8,7 +8,7 @@ document.querySelector("#refreshPopular").addEventListener("click", (event) => {
 const input = document.querySelector('#search')
 displaymovie(await movieDAO.getPopulars())
 
-function displaymovie(array){
+async function displaymovie(array){
     const section = document.querySelector('section')
     const loader = document.querySelector('.loader')
     section.style.opacity = 0; 
@@ -37,6 +37,14 @@ function displaymovie(array){
         div.appendChild(title);
         div.appendChild(rate);
     });
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    console.log(array.results,array.results.length==0)
+    if(array.results.length==0){
+        const article =document.createElement("article")
+        section.innerHTML = '';
+        article.innerHTML="Aucun Film"
+        section.appendChild(article);
+    }
     loader.style.opacity = 0;
     section.style.opacity = 1;
 }

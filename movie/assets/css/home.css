@@ -57,6 +57,11 @@ body{
 .container .content article {
     flex-basis: 450px;
     position: relative;
+    text-align: center;
+    font-size: 40px;
+    color: #a9a9a9;
+    font-family: Lato,sans-serif;
+    font-weight: 700;
 }
 
 
