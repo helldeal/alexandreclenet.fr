@@ -10,6 +10,9 @@ displaymovie(await movieDAO.getPopulars())
 
 function displaymovie(array){
     const section = document.querySelector('section')
+    const loader = document.querySelector('.loader')
+    section.style.opacity = 0; 
+    loader.style.opacity=1;
     const body=document.querySelector('body')
     if(body.style.backgroundImage=="")body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)),url(https://image.tmdb.org/t/p/w1280${array.results[Math.floor(Math.random() * 20)].backdrop_path})`;
     section.innerHTML = '';
@@ -34,7 +37,8 @@ function displaymovie(array){
         div.appendChild(title);
         div.appendChild(rate);
     });
-    console.log(body.style.backgroundImage)
+    loader.style.opacity = 0;
+    section.style.opacity = 1;
 }
 
 input.addEventListener("keyup", async function(event) {

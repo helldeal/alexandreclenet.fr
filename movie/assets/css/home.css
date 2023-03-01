@@ -4,12 +4,17 @@ body{
     background-attachment: fixed;
     color: white;
 }
+.loader{
+    font-size: 20px;
+    color: #a9a9a9;
+    font-family: Lato,sans-serif;
+    height: 0px;
+}
 #refreshPopular{
     background-color: #555555;
     border-radius: 5px;
     opacity: 0.8;
     border: none;
-    font-weight: 700;
     font-size: 18px;
     font-family: Lato,sans-serif;
     padding: 10px 15px;
@@ -26,7 +31,7 @@ body{
         border-bottom-width: 0px;
     border-bottom: 1px solid white;
     color: white;
-    font-size: 20px; 
+    font-size: 25px; 
     margin: 50px;
 }
 
