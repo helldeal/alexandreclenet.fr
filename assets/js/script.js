@@ -5,9 +5,9 @@
 
 
 var md = document.querySelectorAll(".mixbox h1");
-setTimeout(() => {  
-    document.getElementById("preloader").style.transform = "translateX(100%)";
-}, 500);
+// setTimeout(() => {  
+//     document.getElementById("preloader").style.transform = "translateX(100%)";
+// }, 500);
 
 
 function openProjet() {
