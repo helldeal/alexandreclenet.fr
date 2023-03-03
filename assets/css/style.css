@@ -1,8 +1,8 @@
 :root{
   --colorfont:white;
-  --colorfonthover:rgb(0, 136, 255);
+  --colorfonthover:rgb(0, 0, 0);
   --back:rgb(56, 56, 56);
-  --preloadback:rgb(0, 136, 255);
+  --preloadback:rgb(255, 197, 73);
 }
 
 html {
