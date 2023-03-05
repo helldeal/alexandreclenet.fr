@@ -40,7 +40,7 @@ function init() {
 
   scene = new THREE.Scene();
   scene.background = new THREE.Color().setHSL(0.51, 0.4, 0.01);
-  scene.fog = new THREE.Fog(scene.background, 3500, 15000);
+  scene.fog = new THREE.Fog(scene.background, 5000, 15000);
 
   // world
 
@@ -74,7 +74,7 @@ function init() {
 
   const loader = new FontLoader();
   loader.load(
-    "https://threejs.org/examples/fonts/helvetiker_bold.typeface.json",
+    "assets/js/font.json",
     function (font) {
       const matLite = new THREE.MeshBasicMaterial({
         color: 0xffffff,
@@ -83,7 +83,7 @@ function init() {
         side: THREE.DoubleSide,
       });
 
-      const message = " WORK IN\nPROGRESS";
+      const message = "  WORK IN\nPROGRESS";
 
       const shapes = font.generateShapes(message, 50);
 
