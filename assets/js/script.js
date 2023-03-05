@@ -135,8 +135,8 @@ function init() {
 
   controls.movementSpeed = 0;
   controls.domElement = container;
-  controls.rollSpeed = Math.PI / 10;
-  controls.autoForward = false;
+  controls.rollSpeed = Math.PI / 20;
+  controls.autoForward = false
   controls.dragToLook = false;
 
   // stats
