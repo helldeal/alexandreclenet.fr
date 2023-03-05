@@ -98,7 +98,7 @@ function init() {
       text.position.z = -150;
       scene.add(text);
 
-      camera.ss(new THREE.Vector3(text.position.x, 0, text.position.z));
+      camera.lookAt(new THREE.Vector3(text.position.x, 0, text.position.z));
     }
   ); //end load function
 
