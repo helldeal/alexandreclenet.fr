@@ -34,7 +34,7 @@ function init() {
     15000
   );
   camera.position.z = 250;
-  camera.ss;
+
 
   // scene
 
@@ -114,7 +114,7 @@ function init() {
   addLight(0.995, 0.5, 0.5, 0, 300, -4000);
 
   function addLight(h, s, l, x, y, z) {
-    const light = new THREE.PointLight(0xffffff, 1.5, 2000);
+    const light = new THREE.PointLight(0xffffff, 1.5, 5000);
     light.color.setHSL(h, s, l);
     light.position.set(x, y, z);
     scene.add(light);
@@ -142,7 +142,7 @@ function init() {
   // stats
 
   stats = new Stats();
-  container.appendChild(stats.dom);
+  //container.appendChild(stats.dom);
 
   // events
 
@@ -169,7 +169,8 @@ function animate() {
 
 function render() {
   const delta = clock.getDelta();
-
+  if(camera.position.z<6000)
+  camera.position.z+=0.2
   controls.update(delta);
   renderer.render(scene, camera);
 }
