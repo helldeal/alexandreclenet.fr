@@ -121,7 +121,7 @@ function init() {
   addLight(0.3, 0.9, 0.1, 4000, 0, -6000);
     
   function addLight(h, s, l, x, y, z) {
-    const light = new THREE.PointLight(0xffffff, 0, 5000);
+    const light = new THREE.PointLight(0xffffff, 0, 10000);
     light.color.setHSL(h, s, l);
     light.position.set(x, y, z);
     scene.add(light);
@@ -175,11 +175,11 @@ function animate() {
 function render() {
   const delta = clock.getDelta();
   if(camera.position.z<6000)camera.position.z+=0.2
-  lightArray[lightindex2].intensity-=lightArray[lightindex2].intensity/50+0.001
+  lightArray[lightindex2].intensity-=lightArray[lightindex2].intensity/100+0.0001
   if(lightArray[lightindex2].intensity<0){
     lightindex2++
     if (lightindex2>6)lightindex2=0
-    lightArray[lightindex2].intensity=10
+    lightArray[lightindex2].intensity=2
   }
   controls.update(delta);
   renderer.render(scene, camera);
