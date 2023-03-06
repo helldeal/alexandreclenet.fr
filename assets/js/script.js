@@ -121,7 +121,7 @@ function init() {
   addLight(0.3, 0.9, 0.1, 4000, 0, -6000);
     
   function addLight(h, s, l, x, y, z) {
-    const light = new THREE.PointLight(0xffffff, 0, 10000);
+    const light = new THREE.PointLight(0xffffff, 0, 8000);
     light.color.setHSL(h, s, l);
     light.position.set(x, y, z);
     scene.add(light);
