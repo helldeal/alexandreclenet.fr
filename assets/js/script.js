@@ -1,10 +1,10 @@
 import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js";
-import { OrbitControls } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls";
-import { Reflector } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/objects/Reflector";
+//import { OrbitControls } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/OrbitControls";
+//import { Reflector } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/objects/Reflector";
 import { FontLoader } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/loaders/FontLoader.js";
 
 import Stats from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/libs/stats.module.js";
-
+//import { FirstPersonControls } from 'https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/FirstPersonControls.js';
 import { FlyControls } from "https://cdn.skypack.dev/three@0.133.1/examples/jsm/controls/FlyControls.js";
 import {
   Lensflare,
@@ -17,10 +17,13 @@ let camera, scene, renderer;
 let controls;
 
 var lightArray =[]
-var lightindex=0
-var lightindex2=1
+var meteorArray =[]
+var lightindex2=6
+var flareintensity=0
 
 const clock = new THREE.Clock();
+
+
 
 init();
 animate();
@@ -72,6 +75,7 @@ function init() {
     mesh.updateMatrix();
 
     scene.add(mesh);
+    meteorArray.push(mesh)
   }
 
    //LOADER 
@@ -112,20 +116,34 @@ function init() {
   dirLight.position.set(0, -1, 0).normalize();
   dirLight.color.setHSL(0.1, 0.7, 0.5);
   scene.add(dirLight);
-  addLight(0.55, 0.9, 0.5, 0, 0, -6000);
-  addLight(0.08, 0.8, 0.5, 0, 0, -1000);
-  addLight(0.5, 0.5, 0.5, 3000, 0, -1000);
-  addLight(0.1, 0.9, 0.1, -4000, 0, -6000);
-  addLight(0.3, 0.9, 0.1, -3000, 0, -1000);
-  addLight(0.995, 0.5, 0.5, 0, 300, -4000);
-  addLight(0.3, 0.9, 0.1, 4000, 0, -6000);
+
+  const textureLoader = new THREE.TextureLoader();
+
+  const textureFlare0 = textureLoader.load( 'assets/js/lensflare0.png' );
+  const textureFlare3 = textureLoader.load( 'assets/js/lensflare3.png' );
+
+  addLight(0.55, 1, 0, -800, -60, -6000);
+  addLight(0.08, 1, 0, 0, -500, -1000);
+  addLight(0.5, 1, 0, 3000, 0, -1000);
+  addLight(0.1, 1, 0, -4000, 100, -6000);
+  addLight(0.3, 1, 0, -3000, 30, -1000);
+  addLight(0.995, 1, 0, 400, 300, -4000);
+  addLight(0.3, 1, 0, 4000, 20, -6000);
     
   function addLight(h, s, l, x, y, z) {
-    const light = new THREE.PointLight(0xffffff, 0, 8000);
+    const light = new THREE.PointLight(0xffffff, 2, 8000);
     light.color.setHSL(h, s, l);
     light.position.set(x, y, z);
     scene.add(light);
-    lightArray.push(light);
+    lightArray.push({light:light,h:h});
+
+    const lensflare = new Lensflare();
+    lensflare.addElement( new LensflareElement( textureFlare0, 700, 0, light.color ) );
+    // lensflare.addElement( new LensflareElement( textureFlare3, 60, 0.6 ) );
+    // lensflare.addElement( new LensflareElement( textureFlare3, 70, 0.7 ) );
+    // lensflare.addElement( new LensflareElement( textureFlare3, 120, 0.9 ) );
+    // lensflare.addElement( new LensflareElement( textureFlare3, 70, 1 ) );
+    light.add( lensflare );
   }
 
   // renderer
@@ -140,7 +158,7 @@ function init() {
 
   controls = new FlyControls(camera, renderer.domElement);
 
-  controls.movementSpeed = 0;
+  controls.movementSpeed =0;
   controls.domElement = container;
   controls.rollSpeed = Math.PI / 100;
   controls.autoForward = false
@@ -149,7 +167,7 @@ function init() {
   // stats
 
   stats = new Stats();
-  //container.appendChild(stats.dom);
+  container.appendChild(stats.dom);
 
   // events
 
@@ -174,13 +192,26 @@ function animate() {
 }
 function render() {
   const delta = clock.getDelta();
-  if(camera.position.z<6000)camera.position.z+=0.2
-  lightArray[lightindex2].intensity-=lightArray[lightindex2].intensity/100+0.0001
-  if(lightArray[lightindex2].intensity<0){
+  
+  for(let i = 0; i < 5000; i++){
+    meteorArray[i].rotateZ(0.001*Math.random())
+    meteorArray[i].rotateX(0.001*Math.random())
+    meteorArray[i].rotateY(0.001*Math.random())
+    meteorArray[i].updateMatrix()
+  }
+
+  if(camera.position.z<6000)camera.translateZ(0.2)
+  //lightArray[lightindex2].light.intensity-=lightArray[lightindex2].light.intensity/100+0.0001
+  flareintensity-=flareintensity/100+0.0001
+  lightArray[lightindex2].light.color.setHSL(lightArray[lightindex2].h, 0.5,flareintensity);
+  if(flareintensity<0){
+    console.log(lightArray[lightindex2].light)
     lightindex2++
     if (lightindex2>6)lightindex2=0
-    lightArray[lightindex2].intensity=2
+    //lightArray[lightindex2].light.intensity=2
+    flareintensity=0.8
   }
+
   controls.update(delta);
   renderer.render(scene, camera);
 }
