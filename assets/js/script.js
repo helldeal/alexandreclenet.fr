@@ -16,6 +16,10 @@ let container, stats;
 let camera, scene, renderer;
 let controls;
 
+var lightArray =[]
+var lightindex=0
+var lightindex2=1
+
 const clock = new THREE.Clock();
 
 init();
@@ -108,17 +112,18 @@ function init() {
   dirLight.position.set(0, -1, 0).normalize();
   dirLight.color.setHSL(0.1, 0.7, 0.5);
   scene.add(dirLight);
-
   addLight(0.55, 0.9, 0.5, 0, 0, -6000);
   addLight(0.08, 0.8, 0.5, 0, 0, -1000);
   addLight(0.995, 0.5, 0.5, 0, 300, -4000);
-
+  addLight(0.1, 0.9, 0.1, -3000, 0, -6000);
+  addLight(0.5, 0.5, 0.5, 3000, 0, -6000);
+    
   function addLight(h, s, l, x, y, z) {
-    const light = new THREE.PointLight(0xffffff, 1.5, 5000);
+    const light = new THREE.PointLight(0xffffff, 0, 5000);
     light.color.setHSL(h, s, l);
     light.position.set(x, y, z);
     scene.add(light);
-    s;
+    lightArray.push(light);
   }
 
   // renderer
@@ -135,7 +140,7 @@ function init() {
 
   controls.movementSpeed = 0;
   controls.domElement = container;
-  controls.rollSpeed = Math.PI / 20;
+  controls.rollSpeed = Math.PI / 100;
   controls.autoForward = false
   controls.dragToLook = false;
 
@@ -162,15 +167,21 @@ function onWindowResize() {
 
 function animate() {
   requestAnimationFrame(animate);
-
   render();
   stats.update();
 }
-
 function render() {
   const delta = clock.getDelta();
-  if(camera.position.z<6000)
-  camera.position.z+=0.2
+  if(camera.position.z<6000)camera.position.z+=0.2
+  //lightArray[lightindex].intensity-=0.005
+  lightArray[lightindex2].intensity-=lightArray[lightindex2].intensity/100
+  if(lightArray[lightindex2].intensity<0.01){
+   //lightArray[lightindex].intensity=0
+    //lightindex=lightindex2
+    lightindex2++
+    if (lightindex2>4)lightindex2=0
+    lightArray[lightindex2].intensity=8
+  }
   controls.update(delta);
   renderer.render(scene, camera);
 }
