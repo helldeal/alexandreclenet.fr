@@ -114,9 +114,11 @@ function init() {
   scene.add(dirLight);
   addLight(0.55, 0.9, 0.5, 0, 0, -6000);
   addLight(0.08, 0.8, 0.5, 0, 0, -1000);
+  addLight(0.5, 0.5, 0.5, 3000, 0, -1000);
+  addLight(0.1, 0.9, 0.1, -4000, 0, -6000);
+  addLight(0.3, 0.9, 0.1, -3000, 0, -1000);
   addLight(0.995, 0.5, 0.5, 0, 300, -4000);
-  addLight(0.1, 0.9, 0.1, -3000, 0, -6000);
-  addLight(0.5, 0.5, 0.5, 3000, 0, -6000);
+  addLight(0.3, 0.9, 0.1, 4000, 0, -6000);
     
   function addLight(h, s, l, x, y, z) {
     const light = new THREE.PointLight(0xffffff, 0, 5000);
@@ -173,13 +175,10 @@ function animate() {
 function render() {
   const delta = clock.getDelta();
   if(camera.position.z<6000)camera.position.z+=0.2
-  //lightArray[lightindex].intensity-=0.005
   lightArray[lightindex2].intensity-=lightArray[lightindex2].intensity/50+0.001
   if(lightArray[lightindex2].intensity<0){
-   //lightArray[lightindex].intensity=0
-    //lightindex=lightindex2
     lightindex2++
-    if (lightindex2>4)lightindex2=0
+    if (lightindex2>6)lightindex2=0
     lightArray[lightindex2].intensity=10
   }
   controls.update(delta);
