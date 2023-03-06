@@ -174,13 +174,13 @@ function render() {
   const delta = clock.getDelta();
   if(camera.position.z<6000)camera.position.z+=0.2
   //lightArray[lightindex].intensity-=0.005
-  lightArray[lightindex2].intensity-=lightArray[lightindex2].intensity/100
-  if(lightArray[lightindex2].intensity<0.01){
+  lightArray[lightindex2].intensity-=lightArray[lightindex2].intensity/50+0.001
+  if(lightArray[lightindex2].intensity<0){
    //lightArray[lightindex].intensity=0
     //lightindex=lightindex2
     lightindex2++
     if (lightindex2>4)lightindex2=0
-    lightArray[lightindex2].intensity=8
+    lightArray[lightindex2].intensity=10
   }
   controls.update(delta);
   renderer.render(scene, camera);
