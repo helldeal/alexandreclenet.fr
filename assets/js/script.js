@@ -51,9 +51,8 @@ function init() {
 
   // world
 
-  const s = 250;
 
-  const geometry = new THREE.BoxGeometry(s, s, s);
+  const geometry = new THREE.DodecahedronGeometry(50, 0);
   const material = new THREE.MeshPhongMaterial({
     color: 0xffffff,
     specular: 0xffffff,
@@ -111,7 +110,7 @@ function init() {
   // lights
 
   const dirLight = new THREE.DirectionalLight(0xffffff, 0.05);
-  dirLight.position.set(0, -1, 0).normalize();
+  dirLight.position.set(0, 1, 0).normalize();
   dirLight.color.setHSL(0.1, 0.7, 0.5);
   scene.add(dirLight);
 
@@ -137,10 +136,10 @@ function init() {
 
     const lensflare = new Lensflare();
     lensflare.addElement( new LensflareElement( textureFlare0, 700, 0, light.color ) );
-    // lensflare.addElement( new LensflareElement( textureFlare3, 60, 0.6 ) );
-    // lensflare.addElement( new LensflareElement( textureFlare3, 70, 0.7 ) );
-    // lensflare.addElement( new LensflareElement( textureFlare3, 120, 0.9 ) );
-    // lensflare.addElement( new LensflareElement( textureFlare3, 70, 1 ) );
+    lensflare.addElement( new LensflareElement( textureFlare3, 60, 0.6, light.color ) );
+    lensflare.addElement( new LensflareElement( textureFlare3, 70, 0.7, light.color ) );
+    lensflare.addElement( new LensflareElement( textureFlare3, 120, 0.9 , light.color) );
+    lensflare.addElement( new LensflareElement( textureFlare3, 70, 1 , light.color) );
     light.add( lensflare );
   }
 
@@ -158,7 +157,7 @@ function init() {
 
   controls.movementSpeed =0;
   controls.domElement = container;
-  controls.rollSpeed = Math.PI / 100;
+  controls.rollSpeed = Math.PI / 50;
   controls.autoForward = false
   controls.dragToLook = false;
 
