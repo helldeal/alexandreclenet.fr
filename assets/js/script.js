@@ -59,6 +59,7 @@ function init() {
     specular: 0xffffff,
     shininess: 50,
   });
+  
 
   for (let i = 0; i < 5000; i++) {
     const mesh = new THREE.Mesh(geometry, material);
@@ -70,9 +71,6 @@ function init() {
     mesh.rotation.x = Math.random() * Math.PI;
     mesh.rotation.y = Math.random() * Math.PI;
     mesh.rotation.z = Math.random() * Math.PI;
-
-    mesh.matrixAutoUpdate = false;
-    mesh.updateMatrix();
 
     scene.add(mesh);
     meteorArray.push(mesh)
@@ -195,9 +193,6 @@ function render() {
   
   for(let i = 0; i < 5000; i++){
     meteorArray[i].rotateZ(0.001*Math.random())
-    meteorArray[i].rotateX(0.001*Math.random())
-    meteorArray[i].rotateY(0.001*Math.random())
-    meteorArray[i].updateMatrix()
   }
 
   if(camera.position.z<6000)camera.translateZ(0.2)
@@ -205,7 +200,7 @@ function render() {
   flareintensity-=flareintensity/100+0.0001
   lightArray[lightindex2].light.color.setHSL(lightArray[lightindex2].h, 0.5,flareintensity);
   if(flareintensity<0){
-    console.log(lightArray[lightindex2].light)
+    //console.log(lightArray[lightindex2].light)
     lightindex2++
     if (lightindex2>6)lightindex2=0
     //lightArray[lightindex2].light.intensity=2
