@@ -47,7 +47,7 @@ function init() {
 
   scene = new THREE.Scene();
   scene.background = new THREE.Color().setHSL(0.51, 0.4, 0.01);
-  scene.fog = new THREE.Fog(scene.background, 5000, 15000);
+  scene.fog = new THREE.Fog(scene.background, 5000, 12000);
 
   // world
 
