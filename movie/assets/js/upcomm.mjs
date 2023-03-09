@@ -5,14 +5,14 @@ const imgURL = "https://image.tmdb.org/t/p/w1280";
 
 
 const movieDAO = {
-  getPopulars: async (page = 1) => {
-    const suffix = `/movie/popular?api_key=${key}&language=en-US&page=${page}`;
+  getUpcom: async (page = 1) => {
+    const suffix = `/movie/upcoming?api_key=${key}&language=fr&page=${page}`;
     const res = await fetch(baseURL + suffix);
     const data = await res.json();
     return data;
   },
   find: async (term, page = 1) => {
-    const suffix = `/search/movie?api_key=${key}&language=en-US&query=${term}&page=${page}&include_adult=false`;
+    const suffix = `/search/movie?api_key=${key}&language=fr&query=${term}&page=${page}&include_adult=false`;
     const res = await fetch(baseURL + suffix);
     const data = await res.json();
     return data;
@@ -54,7 +54,7 @@ class App extends React.Component {
   
   doUpdate(query) {
     if (query == "" || query== undefined){
-      movieDAO.getPopulars().then((data) => {
+      movieDAO.getUpcom().then((data) => {
         this.setState({ movies: data.results});
       });
     }
