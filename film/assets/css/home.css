@@ -74,7 +74,7 @@ body{
 }
 .dropdown-content a:hover {background-color: #a9a9a9;border-radius: 5px;}
 .dropdown:hover .dropdown-content {display: block;}
-.dropdown:hover >a{color: rgb(133, 186, 255);}
+.dropdown:hover >a{color: rgb(67, 148, 255);}
 
 .container footer {
     flex-wrap: wrap;
@@ -95,6 +95,12 @@ body{
     text-decoration: none;
     color: #ffffff;
 }
+
+.container footer span{
+    text-decoration: none;
+    color: rgb(67, 148, 255);;
+}
+
 
 
 .container .content {

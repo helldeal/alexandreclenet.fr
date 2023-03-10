@@ -114,6 +114,9 @@ class App extends React.Component {
               <Movies key={element.id} movie={element}/>
             ))}
         </section>
+        <footer>
+            <a href="../../">By <span>Al</span>exandre <span>Cl</span>énet</a>
+        </footer>
     </div>
   )}
 }

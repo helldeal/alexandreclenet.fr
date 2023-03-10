@@ -74,7 +74,7 @@ class App extends React.Component {
           </section>
   
           <footer>
-            <a href="../../">By Alexandre Clénet</a>
+            <a href="../../">By <span>Al</span>exandre <span>Cl</span>énet</a>
           </footer>
       </div>
     )}
