@@ -1,4 +1,4 @@
-const { Suspense } = React;
+
 const key = "381cc2db27bb9cdcd712453cd2b2669b";
 const baseURL = "https://api.themoviedb.org/3";
 const imgURL = "https://image.tmdb.org/t/p/w1280";
@@ -28,9 +28,9 @@ class Movies extends React.Component{
                 currentTarget.src="assets/img/notFound.png";
               }}/>
               <div>
-                  <div>{this.props.movie.release_date}</div>
-                  <div>{this.props.movie.title}</div>
-                  <div>{this.props.movie.vote_average}</div>
+                  <div>Date : {this.props.movie.release_date}</div>
+                  <div>Titre : {this.props.movie.title}</div>
+                  <div>Vote : {this.props.movie.vote_average*10}%</div>
               </div>
           </a>
 
@@ -77,11 +77,8 @@ class App extends React.Component {
     return(
     <div className="container">
         <header>
-            <button id="refreshPopular"
-            onClick={this.handleInput}> Films populaires </button>
             <input value={this.state.query} id="search" placeholder="Rechercher..."
             onChange={this.handleInput}/>
-            
         </header>
 
         <section className="content">

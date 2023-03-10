@@ -15,4 +15,4 @@ const movieDAO = {
 //TODO
 
 const root = ReactDOM.createRoot(document.querySelector('#app_container'));
-//TODO
+root.render(<App />);
