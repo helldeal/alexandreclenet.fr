@@ -113,7 +113,7 @@ class App extends React.Component {
         </section>
 
         <footer>
-
+            <a href="../../">By Alexandre Clénet</a>
         </footer>
     </div>
   )}

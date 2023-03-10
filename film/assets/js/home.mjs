@@ -32,12 +32,14 @@ class App extends React.Component {
             this.setState({ movie: data});
           });
       }
-      
+
     render(){
       const body=document.querySelector('body')
       if(body.style.backgroundImage==""&&this.state.movie!=null)body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)),url(${imgURL}${this.state.movie.backdrop_path})`;
   
       if(this.state.movie!=null&&this.state.movie.success == false)document.location.href="populaires.html"
+
+      console.log(this.state.movie)
       return(
       <div className="container">
           <header>
@@ -72,7 +74,7 @@ class App extends React.Component {
           </section>
   
           <footer>
-  
+            <a href="../../">By Alexandre Clénet</a>
           </footer>
       </div>
     )}
