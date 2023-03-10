@@ -96,11 +96,11 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
+    gap: 40px;
 }
 
 .container .content article {
-    flex-basis: 450px;
+    flex-basis: 400px;
     position: relative;
     text-align: center;
     font-size: 40px;
