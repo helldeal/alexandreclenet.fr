@@ -11,6 +11,20 @@ const movieDAO = {
         const res = await fetch(baseURL + suffix)
         const data = await res.json()
         return data
+    },
+    getCredit : async (id) =>
+    {
+        const suffix = `/movie/${id}/credits?api_key=${key}&language=fr`
+        const res = await fetch(baseURL + suffix)
+        const data = await res.json()
+        return data
+    },
+    getReco : async (id) =>
+    {
+        const suffix = `/movie/${id}/recommendations?api_key=${key}&language=fr`
+        const res = await fetch(baseURL + suffix)
+        const data = await res.json()
+        return data
     }
 }
 
@@ -109,7 +123,12 @@ class App extends React.Component {
           <div className="profilinfo">
               <h1>{this.props.movie.title}</h1>
               <p>{this.props.movie.release_date}   {Math.round(this.props.movie.vote_average*10,0)}%  {toHoursAndMinutes(this.props.movie.runtime)}</p>
+              {this.props.movie.genres.map(cat =>
+                cat.name+", "  
+              )}
               <h2>{this.props.movie.tagline}</h2>
+              <p>{this.props.movie.overview}</p>
+              <p>{this.props.movie.overview}</p>
               <p>{this.props.movie.overview}</p>
           </div>
   
