@@ -87,17 +87,30 @@ class App extends React.Component {
   const root = ReactDOM.createRoot(document.querySelector("#app_container"));
   root.render(<App />);
 
+  function toHoursAndMinutes(totalMinutes) {
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
 
+    return hours+"h"+minutes+"m";
+  }
   class Movie extends React.Component{
-    render(){return(
+    
+    
+    render(){
+      this.props.movie.genres.map(element => { 
+       console.log(element)  })
+      return(
       <section className="content">
           <div className="profil">
           <img src={imgURL + this.props.movie.poster_path} onError={({ currentTarget }) => {
-            currentTarget.onerror = null // prevents looping
-            currentTarget.src = "assets/img/notFound.png" 
+            currentTarget.onerror = null 
+            currentTarget.src = "assets/img/notFound.png" // si l'image charge pas
           } } width="480px" />
           <div className="profilinfo">
-              <p>{this.props.movie.title}</p>
+              <h1>{this.props.movie.title}</h1>
+              <p>{this.props.movie.release_date}   {Math.round(this.props.movie.vote_average*10,0)}%  {toHoursAndMinutes(this.props.movie.runtime)}</p>
+              <h2>{this.props.movie.tagline}</h2>
+              <p>{this.props.movie.overview}</p>
           </div>
   
           </div>
