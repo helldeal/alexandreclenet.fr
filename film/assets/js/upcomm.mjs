@@ -30,9 +30,9 @@ class Movies extends React.Component{
                 currentTarget.src="assets/img/notFound.png";
               }}/>
               <div>
-                  <div>{this.props.movie.release_date}</div>
-                  <div>{this.props.movie.title}</div>
-                  <div>{this.props.movie.vote_average}</div>
+                  <div>Date : {this.props.movie.release_date}</div>
+                  <div>Titre : {this.props.movie.title}</div>
+                  <div>Vote : {this.props.movie.vote_average*10}%</div>
               </div>
           </a>
 
