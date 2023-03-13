@@ -7,7 +7,7 @@ const imgURL = 'https://image.tmdb.org/t/p/w1280'
 const movieDAO = {
     getById : async (id) =>
     {
-        const suffix = `/movie/${id}?api_key=${key}&language=en-US`
+        const suffix = `/movie/${id}?api_key=${key}&language=fr`
         const res = await fetch(baseURL + suffix)
         const data = await res.json()
         return data
@@ -94,8 +94,11 @@ class App extends React.Component {
           <div className="profil">
           <img src={imgURL + this.props.movie.poster_path} onError={({ currentTarget }) => {
             currentTarget.onerror = null // prevents looping
-            currentTarget.src = "assets/img/notFound.png"
-          } } />
+            currentTarget.src = "assets/img/notFound.png" 
+          } } width="480px" />
+          <div className="profilinfo">
+              <p>{this.props.movie.title}</p>
+          </div>
   
           </div>
           <div className="actor">
