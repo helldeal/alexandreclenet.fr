@@ -42,12 +42,20 @@ class App extends React.Component {
       super(props);
       this.state = {
         movie: null,
+        cast:[],
+        reco:[]
       };
     }
     componentDidMount() {
         movieDAO.getById(id).then((data) => {
             this.setState({ movie: data});
           });
+        movieDAO.getCredit(id).then((data) => {
+          this.setState({ cast: data.results});
+        });
+        movieDAO.getReco(id).then((data) => {
+          this.setState({ reco: data.results});
+        });
       }
 
     render(){
@@ -60,7 +68,7 @@ class App extends React.Component {
       let moviesec
       if(this.state.movie!=null)moviesec=<Movie movie={this.state.movie}/> 
 
-      console.log(this.state.movie)
+      console.log(this.state.cast)
 
       return(
       <div className="container">
@@ -107,30 +115,30 @@ class App extends React.Component {
 
     return hours+"h"+minutes+"m";
   }
+
+
   class Movie extends React.Component{
-    
-    
     render(){
-      this.props.movie.genres.map(element => { 
-       console.log(element)  })
       return(
       <section className="content">
           <div className="profil">
-          <img src={imgURL + this.props.movie.poster_path} onError={({ currentTarget }) => {
-            currentTarget.onerror = null 
-            currentTarget.src = "assets/img/notFound.png" // si l'image charge pas
-          } } width="480px" />
-          <div className="profilinfo">
-              <h1>{this.props.movie.title}</h1>
-              <p>{this.props.movie.release_date}   {Math.round(this.props.movie.vote_average*10,0)}%  {toHoursAndMinutes(this.props.movie.runtime)}</p>
-              {this.props.movie.genres.map(cat =>
-                cat.name+", "  
-              )}
-              <h2>{this.props.movie.tagline}</h2>
-              <p>{this.props.movie.overview}</p>
-              <p>{this.props.movie.overview}</p>
-              <p>{this.props.movie.overview}</p>
+            <img src={imgURL + this.props.movie.poster_path} onError={({ currentTarget }) => {
+              currentTarget.onerror = null 
+              currentTarget.src = "assets/img/notFound.png" // si l'image charge pas
+            } } width="480px" />
+            <div className="profilinfo">
+                <h1>{this.props.movie.title}</h1>
+                <p>{this.props.movie.release_date}   {Math.round(this.props.movie.vote_average*10,0)}%  {toHoursAndMinutes(this.props.movie.runtime)}</p>
+                {this.props.movie.genres.map(cat =>
+                  cat.name+", "  
+                )}
+                <h2>{this.props.movie.tagline}</h2>
+                <p>{this.props.movie.overview}</p>
+                <p>Réalisateur :</p>
+                <p>Casting :</p>
+            </div>
           </div>
+          <div className="video">
   
           </div>
           <div className="actor">
@@ -143,3 +151,17 @@ class App extends React.Component {
       </section>
     )}
   }
+
+  
+  class Reco extends React.Component{
+    render(){
+      // return(
+      //   )
+  }}
+
+  class Actor extends React.Component{
+    render(){
+      // return(
+      //   )
+  }}
+    
