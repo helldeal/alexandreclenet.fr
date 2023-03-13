@@ -20,6 +20,9 @@ const id = parseInt(params.get("movie"));
 //let element = await movieDAO.getById(id)
 //if(element.title == undefined)document.location.href="populaires.html"
 
+
+
+
 class App extends React.Component {
     constructor(props) {
       super(props);
@@ -37,9 +40,14 @@ class App extends React.Component {
       const body=document.querySelector('body')
       if(body.style.backgroundImage==""&&this.state.movie!=null)body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)),url(${imgURL}${this.state.movie.backdrop_path})`;
   
-      if(this.state.movie!=null&&this.state.movie.success == false)document.location.href="populaires.html"
+      if(this.state.movie!=null&&this.state.movie.success == false){
+        document.location.href="populaires.html"
+      }
+      let moviesec
+      if(this.state.movie!=null)moviesec=<Movie movie={this.state.movie}/> 
 
       console.log(this.state.movie)
+
       return(
       <div className="container">
           <header>
@@ -68,11 +76,7 @@ class App extends React.Component {
                 </div>
               </div>
           </header>
-  
-          <section className="content">
-
-          </section>
-  
+          {moviesec}
           <footer>
             <a href="../../">By <span>Al</span>exandre <span>Cl</span>énet</a>
           </footer>
@@ -82,3 +86,25 @@ class App extends React.Component {
   
   const root = ReactDOM.createRoot(document.querySelector("#app_container"));
   root.render(<App />);
+
+
+  class Movie extends React.Component{
+    render(){return(
+      <section className="content">
+          <div className="profil">
+          <img src={imgURL + this.props.movie.poster_path} onError={({ currentTarget }) => {
+            currentTarget.onerror = null // prevents looping
+            currentTarget.src = "assets/img/notFound.png"
+          } } />
+  
+          </div>
+          <div className="actor">
+  
+          </div>
+          <div className="reco">
+  
+          </div>
+  
+      </section>
+    )}
+  }
