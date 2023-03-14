@@ -25,6 +25,20 @@ const movieDAO = {
         const res = await fetch(baseURL + suffix)
         const data = await res.json()
         return data
+    },
+    getWatchProv : async (id) =>
+    {
+        const suffix = `/movie/${id}/watch/providers?api_key=${key}&language=fr&region=FR`
+        const res = await fetch(baseURL + suffix)
+        const data = await res.json()
+        return data
+    },
+    getWatch : async (id) =>
+    {
+        const suffix = `/movie/${id}/videos?api_key=${key}&language=fr&region=FR`
+        const res = await fetch(baseURL + suffix)
+        const data = await res.json()
+        return data
     }
 }
 
@@ -46,7 +60,11 @@ class App extends React.Component {
       this.state = {
         movie: null,
         cast:[],
-        reco:[]
+        reco:[],
+        crew:[],
+        wp:[],
+        ba:[],
+
       };
     }
     componentDidMount() {
@@ -56,13 +74,22 @@ class App extends React.Component {
         movieDAO.getCredit(id).then((data) => {
           this.setState({ cast: data.cast});
         });
+        movieDAO.getCredit(id).then((data) => {
+          this.setState({ crew: data.crew.filter(crew=>crew.job=="Director")});
+        });
         movieDAO.getReco(id).then((data) => {
           this.setState({ reco: data.results});
+        });
+        movieDAO.getWatchProv(id).then((data) => {
+          this.setState({ wp: data.results});
+        });
+        movieDAO.getWatch(id).then((data) => {
+          this.setState({ ba: data.results});
         });
       }
 
     render(){
-      console.log(this.state.cast)
+      console.log(this.state.ba)
       const body=document.querySelector('body')
       if(body.style.backgroundImage==""&&this.state.movie!=null)body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)),url(${imgURL}${this.state.movie.backdrop_path})`;
   
@@ -102,18 +129,24 @@ class App extends React.Component {
               </div>
           </header>
           {moviesec}
-          <div className="video">
+          <h1>Bande-Annonce :</h1>
+          <div className="video ">
+            {this.state.ba.map(element => (
+                <BA key={element.id} ba={element}/>
+              ))}
+          </div>
+          <h1>Casting :</h1>
+          <div className="detailcontent">
+              {this.state.crew.map(element => (
+                <Actor key={element.id} cast={element}/>
+              ))}
+              {this.state.cast.slice(0,9).map(element => (
+                <Actor key={element.id} cast={element}/>
+              ))}
   
           </div>
-          <div className="actor">
-            <h1>Casting :</h1>
-            {this.state.cast.slice(0,10).map(element => (
-              <Actor key={element.id} cast={element}/>
-            ))}
-  
-          </div>
-          <div className="reco">
-            <h1>Recommendations :</h1>
+          <h1>Recommendations :</h1>
+          <div className="detailcontent">
             {this.state.reco.slice(0,10).map(element => (
               <Reco key={element.id} movie={element}/>
             ))}
@@ -155,6 +188,8 @@ class App extends React.Component {
                 <p>{this.props.movie.overview}</p>
                 <p>Réalisateur :</p>
                 <p>Casting :</p>
+                <p>Budget : {this.props.movie.budget}</p>
+                <p>Revenue : {this.props.movie.revenue}</p>
             </div>
           </div>
   
@@ -193,13 +228,23 @@ class App extends React.Component {
                   currentTarget.src="assets/img/notFound.png";
                 }} width="200px"/>
                 <div>
-                    <div>Role : {this.props.cast.character}</div>
-                    <div>Nom : {this.props.cast.name}</div>
-                    <div>Vote : {Math.round(this.props.cast.vote_average*10)}%</div>
+                    <div>{this.props.cast.character}</div>
+                    <div>{this.props.cast.job}</div>
+                    <div>{this.props.cast.name}</div>
                 </div>
             </a>
   
         </article>
+        )
+  }}
+
+
+  class BA extends React.Component{
+    render(){
+      return(
+        <iframe width="420" height="315"
+        src={"https://www.youtube.com/embed/"+this.props.ba.key}>
+        </iframe> 
         )
   }}
     

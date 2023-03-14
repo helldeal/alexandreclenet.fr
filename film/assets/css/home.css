@@ -102,7 +102,7 @@ body{
 }
 
 
-
+/* -----------------   SEARCH & PAGES   -----------------  */
 .container .content {
     margin: 50px 0;
     display: flex;
@@ -159,6 +159,65 @@ body{
     vertical-align: middle;
     border-radius: 3px;
 }
+
+/* -----------------   MOVIE PAGE DETAILS   -----------------  */
+.container .detailcontent {
+    margin: 30px ;
+    overflow: scroll;
+    display: flex;
+    gap: 30px;
+}
+
+.container .detailcontent article {
+    flex-shrink: 0;
+    width: 200px;
+    position: relative;
+    text-align: center;
+    font-size: 40px;
+    color: #a9a9a9;
+    font-family: Lato,sans-serif;
+    font-weight: 700;
+}
+
+
+
+.container .detailcontent article a > div {
+    text-decoration: none;
+    display: none;
+
+}
+
+.container .detailcontent article a:hover > div {
+    display: block;
+    position: absolute;
+    top:0px;
+    left:0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    font-family: Lato,sans-serif;
+}
+
+.container .detailcontent article a:hover > img {
+    opacity: 0.2;
+}
+
+
+
+.container .detailcontent article a img {
+    object-fit: cover;
+    max-width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    border-radius: 3px;
+}
+
 
 
 
