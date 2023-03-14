@@ -107,17 +107,17 @@ class App extends React.Component {
           </div>
           <div className="actor">
             <h1>Casting :</h1>
-            {this.state.cast.map(element => (
+            {this.state.cast.slice(0,10).map(element => (
               <Actor key={element.id} cast={element}/>
             ))}
   
           </div>
           <div className="reco">
             <h1>Recommendations :</h1>
-            {this.state.reco.map(element => (
+            {this.state.reco.slice(0,10).map(element => (
               <Reco key={element.id} movie={element}/>
             ))}
-          </div>
+          </div>  
           <footer>
             <a href="../../">By <span>Al</span>exandre <span>Cl</span>énet</a>
           </footer>
@@ -175,7 +175,7 @@ class App extends React.Component {
               <div>
                   <div>Date : {this.props.movie.release_date}</div>
                   <div>Titre : {this.props.movie.title}</div>
-                  <div>Vote : {this.props.movie.vote_average*10}%</div>
+                  <div>Vote : {Math.round(this.props.movie.vote_average*10)}%</div>
               </div>
           </a>
 
@@ -195,7 +195,7 @@ class App extends React.Component {
                 <div>
                     <div>Role : {this.props.cast.character}</div>
                     <div>Nom : {this.props.cast.name}</div>
-                    <div>Vote : {this.props.cast.vote_average*10}%</div>
+                    <div>Vote : {Math.round(this.props.cast.vote_average*10)}%</div>
                 </div>
             </a>
   
