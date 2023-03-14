@@ -97,7 +97,7 @@ class App extends React.Component {
         document.location.href="populaires.html"
       }
       let moviesec
-      if(this.state.movie!=null)moviesec=<Movie movie={this.state.movie}/> 
+      if(this.state.movie!=null)moviesec=<Movie movie={this.state.movie} cast={this.state.cast.slice(0,9)} director={this.state.crew}/> 
 
 
       return(
@@ -129,28 +129,31 @@ class App extends React.Component {
               </div>
           </header>
           {moviesec}
-          <h1>Bande-Annonce :</h1>
-          <div className="video ">
-            {this.state.ba.map(element => (
-                <BA key={element.id} ba={element}/>
+          <div className="subcontent">
+            <h1>Bande-Annonce :</h1>
+            <div className="video ">
+              {this.state.ba.map(element => (
+                  <BA key={element.id} ba={element}/>
+                ))}
+            </div>
+            <h1>Casting :</h1>
+            <div className="detailcontent">
+                {this.state.crew.map(element => (
+                  <Actor key={element.id} cast={element}/>
+                ))}
+                {this.state.cast.slice(0,9).map(element => (
+                  <Actor key={element.id} cast={element}/>
+                ))}
+    
+            </div>
+            <h1>Recommendations :</h1>
+            <div className="detailcontent">
+              {this.state.reco.slice(0,10).map(element => (
+                <Reco key={element.id} movie={element}/>
               ))}
+            </div>  
           </div>
-          <h1>Casting :</h1>
-          <div className="detailcontent">
-              {this.state.crew.map(element => (
-                <Actor key={element.id} cast={element}/>
-              ))}
-              {this.state.cast.slice(0,9).map(element => (
-                <Actor key={element.id} cast={element}/>
-              ))}
-  
-          </div>
-          <h1>Recommendations :</h1>
-          <div className="detailcontent">
-            {this.state.reco.slice(0,10).map(element => (
-              <Reco key={element.id} movie={element}/>
-            ))}
-          </div>  
+          
           <footer>
             <a href="../../">By <span>Al</span>exandre <span>Cl</span>énet</a>
           </footer>
@@ -184,12 +187,12 @@ class App extends React.Component {
                 <p>{this.props.movie.genres.map(cat =>
                   cat.name+" "  
                 )}</p>
-                <h2>{this.props.movie.tagline}</h2>
+                <h2><span>{this.props.movie.tagline}</span></h2>
                 <p>{this.props.movie.overview}</p>
-                <p>Réalisateur :</p>
-                <p>Casting :</p>
-                <p>Budget : {this.props.movie.budget}</p>
-                <p>Revenue : {this.props.movie.revenue}</p>
+                <p><span>Réalisateur : </span>{this.props.director.map(elem=>elem.name)}</p>
+                <p><span>Casting : </span>{this.props.cast.map(elem=>elem.name+" ")}</p>
+                <p><span>Budget :</span> {this.props.movie.budget}</p>
+                <p><span>Revenue :</span> {this.props.movie.revenue}</p>
             </div>
           </div>
   

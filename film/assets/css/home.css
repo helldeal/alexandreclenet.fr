@@ -96,7 +96,7 @@ body{
     color: #ffffff;
 }
 
-.container footer span{
+ span{
     text-decoration: none;
     color: rgb(67, 148, 255);;
 }
@@ -162,12 +162,21 @@ body{
 
 /* -----------------   MOVIE PAGE DETAILS   -----------------  */
 .container .detailcontent {
-    margin: 30px ;
-    overflow: scroll;
+    margin: 30px 0;
+    overflow-x: scroll;
     display: flex;
     gap: 30px;
 }
 
+.container .content .profil {
+    margin: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+.container .subcontent {
+    margin: 50px;
+}
 .container .detailcontent article {
     flex-shrink: 0;
     width: 200px;
