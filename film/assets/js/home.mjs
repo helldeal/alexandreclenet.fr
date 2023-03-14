@@ -34,8 +34,11 @@ const id = parseInt(params.get("movie"));
 //let element = await movieDAO.getById(id)
 //if(element.title == undefined)document.location.href="populaires.html"
 
+// const constructmovie=await movieDAO.getById(id)
+// const constructcast=await movieDAO.getCredit(id)
+// const constructreco=await movieDAO.getReco(id)
 
-
+       
 
 class App extends React.Component {
     constructor(props) {
@@ -51,7 +54,7 @@ class App extends React.Component {
             this.setState({ movie: data});
           });
         movieDAO.getCredit(id).then((data) => {
-          this.setState({ cast: data.results});
+          this.setState({ cast: data.cast});
         });
         movieDAO.getReco(id).then((data) => {
           this.setState({ reco: data.results});
@@ -59,6 +62,7 @@ class App extends React.Component {
       }
 
     render(){
+      console.log(this.state.cast)
       const body=document.querySelector('body')
       if(body.style.backgroundImage==""&&this.state.movie!=null)body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)),url(${imgURL}${this.state.movie.backdrop_path})`;
   
@@ -68,7 +72,6 @@ class App extends React.Component {
       let moviesec
       if(this.state.movie!=null)moviesec=<Movie movie={this.state.movie}/> 
 
-      console.log(this.state.cast)
 
       return(
       <div className="container">
@@ -99,6 +102,22 @@ class App extends React.Component {
               </div>
           </header>
           {moviesec}
+          <div className="video">
+  
+          </div>
+          <div className="actor">
+            <h1>Casting :</h1>
+            {this.state.cast.map(element => (
+              <Actor key={element.id} cast={element}/>
+            ))}
+  
+          </div>
+          <div className="reco">
+            <h1>Recommendations :</h1>
+            {this.state.reco.map(element => (
+              <Reco key={element.id} movie={element}/>
+            ))}
+          </div>
           <footer>
             <a href="../../">By <span>Al</span>exandre <span>Cl</span>énet</a>
           </footer>
@@ -129,23 +148,14 @@ class App extends React.Component {
             <div className="profilinfo">
                 <h1>{this.props.movie.title}</h1>
                 <p>{this.props.movie.release_date}   {Math.round(this.props.movie.vote_average*10,0)}%  {toHoursAndMinutes(this.props.movie.runtime)}</p>
-                {this.props.movie.genres.map(cat =>
-                  cat.name+", "  
-                )}
+                <p>{this.props.movie.genres.map(cat =>
+                  cat.name+" "  
+                )}</p>
                 <h2>{this.props.movie.tagline}</h2>
                 <p>{this.props.movie.overview}</p>
                 <p>Réalisateur :</p>
                 <p>Casting :</p>
             </div>
-          </div>
-          <div className="video">
-  
-          </div>
-          <div className="actor">
-  
-          </div>
-          <div className="reco">
-  
           </div>
   
       </section>
@@ -155,13 +165,41 @@ class App extends React.Component {
   
   class Reco extends React.Component{
     render(){
-      // return(
-      //   )
+      return(
+      <article key={this.props.movie.id}>
+          <a href={"../film/?movie="+this.props.movie.id}>
+              <img src={imgURL+this.props.movie.poster_path} onError={({ currentTarget }) => {
+                currentTarget.onerror = null; // prevents looping
+                currentTarget.src="assets/img/notFound.png";
+              }} width="200px"/>
+              <div>
+                  <div>Date : {this.props.movie.release_date}</div>
+                  <div>Titre : {this.props.movie.title}</div>
+                  <div>Vote : {this.props.movie.vote_average*10}%</div>
+              </div>
+          </a>
+
+      </article>
+      )
   }}
 
   class Actor extends React.Component{
     render(){
-      // return(
-      //   )
+      return(
+        <article key={this.props.cast.id}>
+            <a href={"../acteur/?actor="+this.props.cast.id}>
+                <img src={imgURL+this.props.cast.profile_path} onError={({ currentTarget }) => {
+                  currentTarget.onerror = null; // prevents looping
+                  currentTarget.src="assets/img/notFound.png";
+                }} width="200px"/>
+                <div>
+                    <div>Role : {this.props.cast.character}</div>
+                    <div>Nom : {this.props.cast.name}</div>
+                    <div>Vote : {this.props.cast.vote_average*10}%</div>
+                </div>
+            </a>
+  
+        </article>
+        )
   }}
     
